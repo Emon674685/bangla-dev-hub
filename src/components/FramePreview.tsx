@@ -185,14 +185,14 @@ const FramePreview = forwardRef<FramePreviewHandle, FramePreviewProps>(
         // Name and designation
         if (name || designation) {
           ctx.fillStyle = colors.accent;
-          ctx.font = "bold 14px 'Inter', sans-serif";
+          ctx.font = "bold 16px 'Inter', sans-serif";
           const displayText = [name, designation].filter(Boolean).join(" - ");
           ctx.fillText(displayText, size / 2, 550);
         }
 
         // iHelpBD branding
         ctx.fillStyle = "#3B5998";
-        ctx.font = "bold 12px 'Inter', sans-serif";
+        ctx.font = "bold 20px 'Inter', sans-serif";
         ctx.fillText("iHelpBD", size / 2, 575);
       }
     }, [template, photo, name, designation, wishingText]);
