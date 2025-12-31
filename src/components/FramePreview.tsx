@@ -181,6 +181,7 @@ const FramePreview = forwardRef<FramePreviewHandle, FramePreviewProps>(
         if (y <= 520) {
           ctx.fillText(line.trim(), size / 2, y);
         }
+      
 
         // Name and designation
         if (name || designation) {
@@ -189,6 +190,23 @@ const FramePreview = forwardRef<FramePreviewHandle, FramePreviewProps>(
           const displayText = [name, designation].filter(Boolean).join(" - ");
           ctx.fillText(displayText, size / 2, 550);
         }
+// iHelpBD Logo (image)
+const logo = new Image();
+logo.src = "/images/ihelpbd-logo.png";
+
+logo.onload = () => {
+  const logoWidth = 90; // ছোট সাইজ
+  const aspectRatio = logo.width / logo.height;
+  const logoHeight = logoWidth / aspectRatio;
+
+  ctx.drawImage(
+    logo,
+    size / 2 - logoWidth / 2, // center horizontally
+    555,                      // vertical position
+    logoWidth,
+    logoHeight
+  );
+};
 
         // iHelpBD branding
         ctx.fillStyle = "#3B5998";
