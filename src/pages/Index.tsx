@@ -53,16 +53,15 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Header />
 
       {/* Main Content - Two Column Layout */}
-      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
-        <div className="grid lg:grid-cols-[1fr,1.2fr] gap-4 sm:gap-8 items-start">
-          
-          {/* Left Side - Preview Section */}
-          <div className="order-2 lg:order-1 lg:sticky lg:top-4">
-            <div className="relative p-4 sm:p-6 rounded-2xl bg-card/50 border border-border">
+      <div className="flex-1 flex">
+        {/* Left Side - Preview Section (Fixed/Sticky) */}
+        <div className="hidden lg:flex lg:w-[45%] xl:w-[42%] p-4 xl:p-6 bg-card/30 border-r border-border">
+          <div className="sticky top-4 w-full">
+            <div className="relative p-4 xl:p-6 rounded-2xl bg-card/50 border border-border">
               {/* Sparkles */}
               <Sparkle className="absolute top-2 left-4 text-lg" delay={0} />
               <Sparkle className="absolute top-2 right-4 text-lg" delay={2} />
@@ -79,23 +78,25 @@ const Index = () => {
               />
 
               {/* Quote section below preview */}
-              <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-secondary/30 rounded-xl border-l-4 border-primary">
-                <div className="text-primary text-xl sm:text-2xl mb-2">"</div>
-                <p className="text-xs sm:text-sm text-muted-foreground italic leading-relaxed">
+              <div className="mt-4 xl:mt-6 p-3 xl:p-4 bg-secondary/30 rounded-xl border-l-4 border-primary">
+                <div className="text-primary text-xl xl:text-2xl mb-2">"</div>
+                <p className="text-xs xl:text-sm text-muted-foreground italic leading-relaxed">
                   {wishingText || "Wishing you a New Year filled with success, prosperity, and new opportunities. May 2026 be a year of great achievements for all of us. Happy New Year!"}
                 </p>
-                <div className="text-primary text-xl sm:text-2xl text-right">"</div>
+                <div className="text-primary text-xl xl:text-2xl text-right">"</div>
                 {(name || designation) && (
-                  <p className="text-xs sm:text-sm text-primary font-medium mt-2">
+                  <p className="text-xs xl:text-sm text-primary font-medium mt-2">
                     – {[name, designation].filter(Boolean).join(", ")}
                   </p>
                 )}
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Right Side - Editor Section */}
-          <div className="order-1 lg:order-2 space-y-4 sm:space-y-5">
+        {/* Right Side - Dashboard/Editor Section */}
+        <div className="flex-1 overflow-y-auto">
+          <div className="container max-w-2xl mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-6 space-y-4 sm:space-y-5">
             {/* Title */}
             <div className="text-center lg:text-left relative mb-2">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gradient-gold mb-1 sm:mb-2">
@@ -104,6 +105,23 @@ const Index = () => {
               <p className="text-muted-foreground text-sm sm:text-base">
                 Create your personalized New Year 2026 greeting
               </p>
+            </div>
+
+            {/* Mobile Preview - Only visible on mobile */}
+            <div className="lg:hidden">
+              <div className="relative p-3 sm:p-4 rounded-xl bg-card/50 border border-border mb-4">
+                <Sparkle className="absolute top-1 left-2 text-base" delay={0} />
+                <Sparkle className="absolute top-1 right-2 text-base" delay={2} />
+                
+                <FramePreview
+                  ref={frameRef}
+                  template={template}
+                  photo={photo}
+                  name={name}
+                  designation={designation}
+                  wishingText={wishingText}
+                />
+              </div>
             </div>
 
             <StepCard step={1} title="Choose Template">
@@ -150,16 +168,16 @@ const Index = () => {
                 </Button>
               </div>
             </StepCard>
+
+            {/* Footer */}
+            <footer className="py-4 sm:py-6 text-center border-t border-border mt-6 sm:mt-8">
+              <p className="text-muted-foreground text-xs sm:text-sm">
+                © 2026 iHelpBD - Software for the Next Generation
+              </p>
+            </footer>
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="py-6 sm:py-8 text-center border-t border-border mt-8 sm:mt-12">
-        <p className="text-muted-foreground text-xs sm:text-sm">
-          © 2026 iHelpBD - Software for the Next Generation
-        </p>
-      </footer>
     </div>
   );
 };
