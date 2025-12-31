@@ -32,18 +32,18 @@ const PhotoUploader = ({ onUpload, preview }: PhotoUploaderProps) => {
     <label
       onDrop={handleDrop}
       onDragOver={(e) => e.preventDefault()}
-      className="relative flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-muted rounded-lg cursor-pointer hover:border-primary/50 transition-colors"
+      className="relative flex flex-col items-center justify-center w-full h-28 sm:h-40 border-2 border-dashed border-muted rounded-lg cursor-pointer hover:border-primary/50 transition-colors"
     >
       {preview ? (
         <img src={preview} alt="Preview" className="w-full h-full object-cover rounded-lg" />
       ) : (
         <>
-          <Upload className="w-10 h-10 text-muted-foreground mb-2" />
-          <p className="text-sm">
+          <Upload className="w-8 h-8 sm:w-10 sm:h-10 text-muted-foreground mb-2" />
+          <p className="text-xs sm:text-sm text-center px-2">
             <span className="text-primary font-medium">Click to upload</span>
             <span className="text-muted-foreground"> or drag and drop</span>
           </p>
-          <p className="text-xs text-muted-foreground mt-1">PNG, JPG (max 10MB)</p>
+          <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">PNG, JPG (max 10MB)</p>
         </>
       )}
       <input
