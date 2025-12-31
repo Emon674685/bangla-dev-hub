@@ -208,10 +208,7 @@ logo.onload = () => {
   );
 };
 
-        // iHelpBD branding
-        ctx.fillStyle = "#3B5998";
-        ctx.font = "bold 20px 'Inter', sans-serif";
-        ctx.fillText("iHelpBD", size / 2, 575);
+      
       }
     }, [template, photo, name, designation, wishingText]);
 
