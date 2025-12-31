@@ -20,13 +20,19 @@ const FramePreview = forwardRef<FramePreviewHandle, FramePreviewProps>(
     const getTemplateColors = () => {
       switch (template) {
         case "gold":
-          return { border: "#D4A418", accent: "#F5C642", bg: "rgba(30, 41, 59, 0.95)" };
+          return { border: "#D4A418", accent: "#F5C642", bg: "rgba(30, 41, 59, 0.95)", text: "#FFFFFF" };
         case "green":
-          return { border: "#10B981", accent: "#34D399", bg: "rgba(20, 50, 40, 0.95)" };
+          return { border: "#10B981", accent: "#34D399", bg: "rgba(20, 50, 40, 0.95)", text: "#FFFFFF" };
         case "purple":
-          return { border: "#A855F7", accent: "#D946EF", bg: "rgba(40, 20, 60, 0.95)" };
+          return { border: "#A855F7", accent: "#D946EF", bg: "rgba(40, 20, 60, 0.95)", text: "#FFFFFF" };
+        case "royal-blue":
+          return { border: "#60A5FA", accent: "#D4A418", bg: "rgba(30, 41, 70, 0.98)", text: "#F5C642" };
+        case "premium-black":
+          return { border: "#D4A418", accent: "#F5C642", bg: "rgba(15, 15, 20, 0.98)", text: "#F5C642" };
+        case "party-pink":
+          return { border: "#EC4899", accent: "#F472B6", bg: "rgba(80, 30, 60, 0.95)", text: "#FBBF24" };
         default:
-          return { border: "#D4A418", accent: "#F5C642", bg: "rgba(30, 41, 59, 0.95)" };
+          return { border: "#D4A418", accent: "#F5C642", bg: "rgba(30, 41, 59, 0.95)", text: "#FFFFFF" };
       }
     };
 

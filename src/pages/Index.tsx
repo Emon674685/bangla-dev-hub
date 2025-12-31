@@ -56,38 +56,56 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* Title Section */}
-      <div className="text-center py-6 relative">
-        <Sparkle className="absolute left-1/4 top-2 text-2xl" delay={0} />
-        <Sparkle className="absolute right-1/4 top-2 text-2xl" delay={2} />
-        <Sparkle className="absolute left-1/3 bottom-2 text-xl" delay={1} />
-        <Sparkle className="absolute right-1/3 bottom-2 text-xl" delay={3} />
-        
-        <h1 className="text-4xl md:text-5xl font-display font-bold text-gradient-gold mb-3">
-          New Year Frame Editor
-        </h1>
-        <p className="text-muted-foreground text-lg">
-          Create your personalized New Year 2026 greeting
-        </p>
-      </div>
+      {/* Main Content - Two Column Layout */}
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+        <div className="grid lg:grid-cols-[1fr,1.2fr] gap-4 sm:gap-8 items-start">
+          
+          {/* Left Side - Preview Section */}
+          <div className="order-2 lg:order-1 lg:sticky lg:top-4">
+            <div className="relative p-4 sm:p-6 rounded-2xl bg-card/50 border border-border">
+              {/* Sparkles */}
+              <Sparkle className="absolute top-2 left-4 text-lg" delay={0} />
+              <Sparkle className="absolute top-2 right-4 text-lg" delay={2} />
+              <Sparkle className="absolute bottom-1/3 left-2 text-base" delay={1} />
+              <Sparkle className="absolute bottom-1/3 right-2 text-base" delay={3} />
+              
+              <FramePreview
+                ref={frameRef}
+                template={template}
+                photo={photo}
+                name={name}
+                designation={designation}
+                wishingText={wishingText}
+              />
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid lg:grid-cols-2 gap-8 items-start">
-          {/* Preview Section */}
-          <div className="flex justify-center lg:sticky lg:top-8">
-            <FramePreview
-              ref={frameRef}
-              template={template}
-              photo={photo}
-              name={name}
-              designation={designation}
-              wishingText={wishingText}
-            />
+              {/* Quote section below preview */}
+              <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-secondary/30 rounded-xl border-l-4 border-primary">
+                <div className="text-primary text-xl sm:text-2xl mb-2">"</div>
+                <p className="text-xs sm:text-sm text-muted-foreground italic leading-relaxed">
+                  {wishingText || "Wishing you a New Year filled with success, prosperity, and new opportunities. May 2026 be a year of great achievements for all of us. Happy New Year!"}
+                </p>
+                <div className="text-primary text-xl sm:text-2xl text-right">"</div>
+                {(name || designation) && (
+                  <p className="text-xs sm:text-sm text-primary font-medium mt-2">
+                    – {[name, designation].filter(Boolean).join(", ")}
+                  </p>
+                )}
+              </div>
+            </div>
           </div>
 
-          {/* Editor Section */}
-          <div className="space-y-5">
+          {/* Right Side - Editor Section */}
+          <div className="order-1 lg:order-2 space-y-4 sm:space-y-5">
+            {/* Title */}
+            <div className="text-center lg:text-left relative mb-2">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gradient-gold mb-1 sm:mb-2">
+                New Year Frame Editor
+              </h1>
+              <p className="text-muted-foreground text-sm sm:text-base">
+                Create your personalized New Year 2026 greeting
+              </p>
+            </div>
+
             <StepCard step={1} title="Choose Template">
               <TemplateSelector selected={template} onSelect={setTemplate} />
             </StepCard>
@@ -109,14 +127,14 @@ const Index = () => {
 
             <StepCard step={4} title="Download Your Frame">
               {!photo && (
-                <p className="text-muted-foreground text-sm mb-4">
+                <p className="text-muted-foreground text-xs sm:text-sm mb-3 sm:mb-4">
                   Upload a photo first to create your personalized frame.
                 </p>
               )}
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                 <Button
                   onClick={handleDownload}
-                  className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90"
+                  className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 h-10 sm:h-11"
                   disabled={!photo}
                 >
                   <Download className="w-4 h-4 mr-2" />
@@ -125,7 +143,7 @@ const Index = () => {
                 <Button
                   onClick={handleReset}
                   variant="outline"
-                  className="border-muted hover:bg-secondary"
+                  className="border-muted hover:bg-secondary h-10 sm:h-11"
                 >
                   <RotateCcw className="w-4 h-4 mr-2" />
                   Start Over
@@ -137,8 +155,8 @@ const Index = () => {
       </div>
 
       {/* Footer */}
-      <footer className="py-8 text-center border-t border-border mt-12">
-        <p className="text-muted-foreground text-sm">
+      <footer className="py-6 sm:py-8 text-center border-t border-border mt-8 sm:mt-12">
+        <p className="text-muted-foreground text-xs sm:text-sm">
           © 2026 iHelpBD - Software for the Next Generation
         </p>
       </footer>
