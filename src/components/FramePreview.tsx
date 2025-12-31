@@ -192,7 +192,7 @@ const FramePreview = forwardRef<FramePreviewHandle, FramePreviewProps>(
         }
 // iHelpBD Logo (image)
 const logo = new Image();
-logo.src = "/images/ihelpbd-logo.png";
+logo.src = "/ihelpbd-logo.png";
 
 logo.onload = () => {
   const logoWidth = 90; // ছোট সাইজ
