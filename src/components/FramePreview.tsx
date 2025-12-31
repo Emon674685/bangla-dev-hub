@@ -195,7 +195,7 @@ const logo = new Image();
 logo.src = "/ihelpbd-logo.png";
 
 logo.onload = () => {
-  const logoWidth = 90; // ছোট সাইজ
+  const logoWidth = 120; // ছোট সাইজ
   const aspectRatio = logo.width / logo.height;
   const logoHeight = logoWidth / aspectRatio;
 
