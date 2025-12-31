@@ -202,7 +202,7 @@ logo.onload = () => {
   ctx.drawImage(
     logo,
     size / 2 - logoWidth / 2, // center horizontally
-    555,                      // vertical position
+    500,                      // vertical position
     logoWidth,
     logoHeight
   );
